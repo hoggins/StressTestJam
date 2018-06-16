@@ -8,6 +8,11 @@ public class PlayerControl : MonoBehaviour
 
   public float ForwardMaxSpeedAccelerated = 10;
   public float ForwardMaxSpeed = 10;
+
+  public float MaxSpeedChangeSpeedUp = 3;
+  public float MaxSpeedChangeSpeedDown = 1f;
+
+
   private float _currentMaxSpeed = 10;
 
 
@@ -82,7 +87,7 @@ public class PlayerControl : MonoBehaviour
   {
     _currentMaxSpeed = Mathf.Lerp(_currentMaxSpeed,
       _input.y > 0.01f ? ForwardMaxSpeedAccelerated : ForwardMaxSpeed,
-      Time.deltaTime*(_input.y > 0.01f ? 3f : 0.5f));
+      Time.deltaTime*(_input.y > 0.01f ? MaxSpeedChangeSpeedUp : MaxSpeedChangeSpeedDown));
 
     Velocity += new Vector3(_input.x*DirectionChangeAcc, _input.y*DirectionChangeAccY, ForwardAcceleration)*Time.deltaTime;
 

@@ -892,6 +892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1849595668}
   - component: {fileID: 1849595667}
+  - component: {fileID: 1849595669}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -910,10 +911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3005600252c9a754e8f12015a7a2e69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallPrefab: {fileID: 1515350202041150, guid: 9030747d426d7b94ebd720e69f13b6d6, type: 2}
   AllDeadPrefab: {fileID: 1257440635923652, guid: 8c8abd0f8ef881f4fa2e5c9b16e71272,
     type: 2}
-  WallLength: 50
   RotationSpeed: 8
   RotationRoot: {fileID: 155107344}
 --- !u!4 &1849595668
@@ -929,6 +928,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849595669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849595666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d8f28e450b45ccb44b1bd640668ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WallPrefab: {fileID: 1515350202041150, guid: 9030747d426d7b94ebd720e69f13b6d6, type: 2}
+  LayoutPrefabs:
+  - {fileID: 1976334511786492, guid: e1e55cc2507f72f47a91fc8e6b4158c8, type: 2}
+  - {fileID: 1694081723629332, guid: b0acb1a8121629e42b0fd0954a4453b4, type: 2}
+  WallLength: 50
+  RotationRoot: {fileID: 155107344}
 --- !u!1001 &1852093826
 Prefab:
   m_ObjectHideFlags: 0

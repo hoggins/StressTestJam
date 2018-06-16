@@ -6,8 +6,16 @@ public class CameraController : MonoBehaviour
   public GameObject Target;
   public float Speed;
   public Vector3 Offset;
+  public static CameraController I;
+  public Camera Native;
 
-	void Start ()
+  void Awake()
+  {
+    I = this;
+    Native = GetComponent<Camera>();
+  }
+
+  void Start ()
   {
 		
 	}

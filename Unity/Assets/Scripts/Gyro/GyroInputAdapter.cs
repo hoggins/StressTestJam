@@ -15,7 +15,7 @@ namespace Gyro
 
         private void Awake()
         {
-            Application.targetFrameRate = 30;
+            
             Input.gyro.enabled = true;
             _stick = new GameObject("GyroStic");
             _stick.transform.position = new Vector3(-1000,-1000,-1000);

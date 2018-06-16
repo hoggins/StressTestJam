@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44407356, g: 0.49331725, b: 0.5723977, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1927368281151842, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}
@@ -496,6 +496,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114813511906695366, guid: 1df6c94d333fd55478d36edea267d8a4,
+        type: 2}
+      propertyPath: FallSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1df6c94d333fd55478d36edea267d8a4, type: 2}
   m_IsPrefabParent: 0
@@ -700,7 +705,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1927368281151842, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}
@@ -1129,6 +1134,7 @@ MonoBehaviour:
   Target: {fileID: 556020659}
   Speed: 5
   Offset: {x: 0, y: 8.82, z: -7}
+  OffsetYClamp: {x: 2, y: 14}
   Native: {fileID: 1717154656}
 --- !u!82 &1717154659
 AudioSource:
@@ -1238,13 +1244,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3005600252c9a754e8f12015a7a2e69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartSound: {fileID: 188667727}
-  LoseSound: {fileID: 687711296}
-  WinSound: {fileID: 1118235666}
+  StartSound: {fileID: 0}
+  LoseSound: {fileID: 0}
+  WinSound: {fileID: 0}
   AllDeadPrefab: {fileID: 1257440635923652, guid: 8c8abd0f8ef881f4fa2e5c9b16e71272,
     type: 2}
+  AllFinishedPrefab: {fileID: 1257440635923652, guid: 95fb125d7bbbe104f8258f8a5e62149d,
+    type: 2}
   RotationSpeed: 8
-  RotationRoot: {fileID: 155107344}
 --- !u!4 &1849595668
 Transform:
   m_ObjectHideFlags: 0
@@ -1272,10 +1279,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d8f28e450b45ccb44b1bd640668ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChanksCount: 3
   WallPrefab: {fileID: 1515350202041150, guid: 9030747d426d7b94ebd720e69f13b6d6, type: 2}
+  CompleteTriggerPrefab: {fileID: 1991518101395182, guid: 2fa1aa72e596458428b901309bff9f39,
+    type: 2}
   LayoutPrefabs:
-  - {fileID: 1976334511786492, guid: e1e55cc2507f72f47a91fc8e6b4158c8, type: 2}
-  - {fileID: 1694081723629332, guid: b0acb1a8121629e42b0fd0954a4453b4, type: 2}
+  - {fileID: 1968568885011608, guid: d8b5ee9b4bbf71646ab875769a7f3056, type: 2}
   WallLength: 50
   RotationRoot: {fileID: 155107344}
 --- !u!1001 &1852093826
@@ -1335,7 +1344,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1927368281151842, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}
@@ -1390,7 +1399,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1927368281151842, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7dd568c6b08792441ab502fa64cca4b3, type: 2}

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,15 +12,18 @@ public class GameController : MonoBehaviour
   public AudioSource WinSound;
 
   public GameObject AllDeadPrefab;
+  public GameObject AllFinishedPrefab;
   public float RotationSpeed = 8f;
 
-  public GameObject RotationRoot;
+  public bool IsCompleted { get; private set; }
 
 
   private GameObject _allDead;
 
   void Awake()
   {
+    Application.targetFrameRate = 30;
+    
     I = this;
   }
 
@@ -27,7 +31,7 @@ public class GameController : MonoBehaviour
   {
     if (PlayerControl.I.AllDead && _allDead == null)
     {
-      LoseSound.Play();
+//      LoseSound.Play();
       ShowAllDead();
     }
   }
@@ -44,5 +48,25 @@ public class GameController : MonoBehaviour
     yield return new WaitForSeconds(5.0f);
 
     SceneManager.LoadScene("gameplay");
+  }
+
+  public void CompleteGame()
+  {
+    IsCompleted = true;
+    DataModel.SetBattleScore(PlayerControl.I.AlivePercent);
+    ShowGameFinished();
+  }
+  private void ShowGameFinished()
+  {
+    _allDead = Instantiate(AllFinishedPrefab);
+
+    StartCoroutine(FinishedCoroutine());
+  }
+
+  private IEnumerator FinishedCoroutine()
+  {
+    yield return new WaitForSeconds(2.0f);
+
+    SceneManager.LoadScene("gameFinished");
   }
 }

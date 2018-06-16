@@ -41,6 +41,8 @@ public class PlayerControl : MonoBehaviour
   {
     get { return _akrobanchiks != null && _akrobanchiks.All(a => a == null || a.Dead); }
   }
+  
+  public float AlivePercent { get {return _akrobanchiks.Count / (float)AkrobanchiksCount; }}
 
   void Awake()
   {
@@ -112,6 +114,6 @@ public class PlayerControl : MonoBehaviour
     _akrobanchiks = akrobanchiks;
     Active = true;
 
-    GameController.I.StartSound.Play();
+//    GameController.I.StartSound.Play();
   }
 }

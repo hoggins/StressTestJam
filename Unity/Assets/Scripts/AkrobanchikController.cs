@@ -75,6 +75,8 @@ public class AkrobanchikController : MonoBehaviour
 
   void OnCollisionEnter(Collision collision)
   {
+    if (GameController.I.IsCompleted)
+      return;
     if (collision.gameObject.CompareTag("Wall"))
     {
       Dead = true;

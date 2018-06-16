@@ -14,6 +14,7 @@ public class PlayerControl : MonoBehaviour
   public float ForwardAcceleration = 1;
 
   public float DirectionChangeAcc = 5;
+  public float DirectionChangeAccY = 5;
   public float DirectionMaxSpeed = 5f;
 
   public float SlowDown = 1f;
@@ -83,7 +84,7 @@ public class PlayerControl : MonoBehaviour
       _input.y > 0.01f ? ForwardMaxSpeedAccelerated : ForwardMaxSpeed,
       Time.deltaTime*(_input.y > 0.01f ? 3f : 0.5f));
 
-    Velocity += new Vector3(_input.x*DirectionChangeAcc, _input.y*DirectionChangeAcc, ForwardAcceleration)*Time.deltaTime;
+    Velocity += new Vector3(_input.x*DirectionChangeAcc, _input.y*DirectionChangeAccY, ForwardAcceleration)*Time.deltaTime;
 
     if (Mathf.Abs(_input.x) < 0.01f)
     {

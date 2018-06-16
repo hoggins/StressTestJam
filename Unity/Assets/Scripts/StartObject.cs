@@ -7,6 +7,8 @@ public class StartObject : MonoBehaviour {
   public List<GameObject> SpawnPoints;
   private List<AkrobanchikController> _akrobanchiks;
 
+  private bool _didSet;
+
   void Start ()
 	{
 	  SpawnAkrobanchiks();
@@ -14,8 +16,12 @@ public class StartObject : MonoBehaviour {
 	
 	void Update ()
   {
+    if (_didSet)
+      return;
+
 	  if (PlayerControl.I._input.y > 0)
 	  {
+      _didSet = true;
       PlayerControl.I.SetAkrobanchiks(_akrobanchiks);
 	  }
   }

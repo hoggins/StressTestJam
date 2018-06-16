@@ -45,7 +45,6 @@ public class PlayerControl : MonoBehaviour
   void Start()
   {
     Velocity = new Vector3(0,0, ForwardMaxSpeedAccelerated);
-    //SpawnAkrobanchiks();
   }
 
   public void SetInput(Vector2 input)
@@ -107,5 +106,7 @@ public class PlayerControl : MonoBehaviour
   {
     _akrobanchiks = akrobanchiks;
     Active = true;
+
+    GameController.I.StartSound.Play();
   }
 }

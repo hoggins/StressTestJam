@@ -1,12 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
   public static GameController I;
+
+  public AudioSource StartSound;
+  public AudioSource LoseSound;
+  public AudioSource WinSound;
 
   public GameObject AllDeadPrefab;
   public float RotationSpeed = 8f;
@@ -25,6 +27,7 @@ public class GameController : MonoBehaviour
   {
     if (PlayerControl.I.AllDead && _allDead == null)
     {
+      LoseSound.Play();
       ShowAllDead();
     }
   }

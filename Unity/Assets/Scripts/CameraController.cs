@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 		
 	}
 	
-	void Update ()
+	void LateUpdate ()
 	{
     if(Target == null)
       return;

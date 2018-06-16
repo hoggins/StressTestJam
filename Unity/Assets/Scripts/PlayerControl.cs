@@ -21,17 +21,19 @@ public class PlayerControl : MonoBehaviour
 
   public Vector3 Velocity;
 
+  public bool Active;
+
   public const int AkrobanchiksCount = 30;
 
 
   public GameObject AkrobanchikPrefab;
   private List<AkrobanchikController> _akrobanchiks;
 
-  private Vector2 _input;
+  public Vector2 _input;
 
   public bool AllDead
   {
-    get { return _akrobanchiks.All(a => a == null || a.Dead); }
+    get { return _akrobanchiks != null && _akrobanchiks.All(a => a == null || a.Dead); }
   }
 
   void Awake()
@@ -41,20 +43,8 @@ public class PlayerControl : MonoBehaviour
 
   void Start()
   {
-    SpawnAkrobanchiks();
-  }
-
-  private void SpawnAkrobanchiks()
-  {
-    _akrobanchiks = new List<AkrobanchikController>();
-    for (int i = 0; i < AkrobanchiksCount; i++)
-    {
-      var go = Instantiate(AkrobanchikPrefab, transform.position, Quaternion.identity);
-      var ac = go.GetComponent<AkrobanchikController>();
-      ac.SetIndex(i);
-
-      _akrobanchiks.Add(ac);
-    }
+    Velocity = new Vector3(0,0, ForwardMaxSpeedAccelerated);
+    //SpawnAkrobanchiks();
   }
 
   public void SetInput(Vector2 input)
@@ -69,6 +59,9 @@ public class PlayerControl : MonoBehaviour
 
   void Update()
   {
+    if(!Active)
+      return;
+
     UpdateControl();
     UpdateAkrobanchiks();
   }
@@ -106,5 +99,11 @@ public class PlayerControl : MonoBehaviour
     Velocity.x = Mathf.Sign(Velocity.x)*Mathf.Min(DirectionMaxSpeed, Mathf.Abs(Velocity.x));
 
     transform.position += Velocity*Time.deltaTime;
+  }
+
+  public void SetAkrobanchiks(List<AkrobanchikController> akrobanchiks)
+  {
+    _akrobanchiks = akrobanchiks;
+    Active = true;
   }
 }

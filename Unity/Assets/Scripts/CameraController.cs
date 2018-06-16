@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour
     if(Target == null)
       return;
 
-	  transform.position = Vector3.Lerp(transform.position, Target.transform.position + Offset, Time.deltaTime);
+    transform.position = new Vector3(Offset.x, Offset.y , Mathf.Lerp(transform.position.z, Target.transform.position.z + Offset.z, Time.deltaTime*Speed));
+
+	  //transform.position = Vector3.Lerp(transform.position, Target.transform.position + Offset, Time.deltaTime);
 	}
 }

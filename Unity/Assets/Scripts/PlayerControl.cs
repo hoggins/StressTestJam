@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -16,13 +17,18 @@ public class PlayerControl : MonoBehaviour
 
   public Vector3 Velocity;
 
-  public int AkrobanchiksCount = 30;
+  public const int AkrobanchiksCount = 30;
 
 
   public GameObject AkrobanchikPrefab;
   private List<AkrobanchikController> _akrobanchiks;
 
   private Vector2 _input;
+
+  public bool AllDead
+  {
+    get { return _akrobanchiks.All(a => a == null || a.Dead); }
+  }
 
   void Awake()
   {
@@ -42,6 +48,8 @@ public class PlayerControl : MonoBehaviour
       var go = Instantiate(AkrobanchikPrefab, transform.position, Quaternion.identity);
       var ac = go.GetComponent<AkrobanchikController>();
       ac.SetIndex(i);
+
+      _akrobanchiks.Add(ac);
     }
   }
 
@@ -57,7 +65,24 @@ public class PlayerControl : MonoBehaviour
 
   void Update()
   {
-    Velocity += new Vector3(_input.x * DirectionChangeAcc, _input.y * DirectionChangeAcc, ForwardAcceleration)*Time.deltaTime;
+    UpdateControl();
+    UpdateAkrobanchiks();
+  }
+
+  private void UpdateAkrobanchiks()
+  {
+    _akrobanchiks.RemoveAll((akrobanchik) => akrobanchik == null);
+
+    for (int i = 0; i < _akrobanchiks.Count; i++)
+    {
+      var akrobanchik = _akrobanchiks[i];
+      akrobanchik.SetIndex(i);
+    }
+  }
+
+  private void UpdateControl()
+  {
+    Velocity += new Vector3(_input.x*DirectionChangeAcc, _input.y*DirectionChangeAcc, ForwardAcceleration)*Time.deltaTime;
 
     if (Mathf.Abs(_input.x) < 0.01f)
     {
@@ -69,8 +94,8 @@ public class PlayerControl : MonoBehaviour
     }
 
     Velocity.z = Mathf.Min(ForwardMaxSpeed, Velocity.z);
-    Velocity.y = Mathf.Sign(Velocity.y) * Mathf.Min(DirectionMaxSpeed, Mathf.Abs(Velocity.y));
-    Velocity.x = Mathf.Sign(Velocity.x) * Mathf.Min(DirectionMaxSpeed, Mathf.Abs(Velocity.x));
+    Velocity.y = Mathf.Sign(Velocity.y)*Mathf.Min(DirectionMaxSpeed, Mathf.Abs(Velocity.y));
+    Velocity.x = Mathf.Sign(Velocity.x)*Mathf.Min(DirectionMaxSpeed, Mathf.Abs(Velocity.x));
 
     transform.position += Velocity*Time.deltaTime;
   }

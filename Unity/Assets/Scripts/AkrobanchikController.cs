@@ -4,17 +4,25 @@ using UnityEngine;
 public class AkrobanchikController : MonoBehaviour
 {
   public float FollowSpeed;
+  public float ZFollowSpeed;
+
   private int _index;
   public float XOffset = 2;
   public float YOffset = 2f;
   public float ZOffset = 0.1f;
 
-  public Vector3 _positionOffset;
+  private Vector3 _positionOffset;
+  private Rigidbody _rb;
+
+  public bool Dead { get; set; }
+
   private float _elapsed;
   private float _elapsed2;
 
   void Start ()
   {
+    _rb = GetComponent<Rigidbody>();
+
     GetPositionOffset();
     StartCoroutine(PositionOffsetChanger());
     _elapsed = Random.Range(-Mathf.PI, Mathf.PI);
@@ -30,20 +38,52 @@ public class AkrobanchikController : MonoBehaviour
 
   void Update ()
   {
+    if(Dead)
+      return;
+
     _elapsed += Time.deltaTime;
     _elapsed2 += Time.deltaTime;
 
     _positionOffset.y += Mathf.Sin(_elapsed)*Time.deltaTime*0.25f;
     _positionOffset.x += Mathf.Cos(_elapsed2)*Time.deltaTime*0.5f;
 
-	  transform.position = Vector3.Lerp(transform.position,
-	    PlayerControl.I.transform.position + _positionOffset,
-	    Time.deltaTime*Mathf.Sqrt(_index)*FollowSpeed);
-	}
+
+    var pos = transform.position;
+    var resultPos = PlayerControl.I.transform.position + _positionOffset;
+    var indexSpeed = PlayerControl.AkrobanchiksCount - _index;
+
+    pos.x = Mathf.Lerp(pos.x, resultPos.x, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);
+    pos.y = Mathf.Lerp(pos.y, resultPos.y, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);
+    pos.z = Mathf.Lerp(pos.z, resultPos.z, Time.deltaTime*indexSpeed*ZFollowSpeed);
+
+    transform.position = pos;
+
+    //transform.position = Vector3.Lerp(transform.position,
+    //  PlayerControl.I.transform.position + _positionOffset,
+    //  Time.deltaTime*(PlayerControl.AkrobanchiksCount - _index)*FollowSpeed);
+
+
+  }
+
+  void FixedUpdate()
+  {
+    //_rb.velocity += -(transform.position - (PlayerControl.I.transform.position + _positionOffset)).normalized
+    //                *Time.fixedDeltaTime*Mathf.Sqrt(_index + 1)*FollowSpeed;
+  }
 
   public void SetIndex(int index)
   {
     _index = index;
+  }
+
+  void OnCollisionEnter(Collision collision)
+  {
+    if (collision.gameObject.CompareTag("Wall"))
+    {
+      Dead = true;
+      _rb.isKinematic = false;
+      Destroy(this);
+    }
   }
 
   private IEnumerator PositionOffsetChanger()

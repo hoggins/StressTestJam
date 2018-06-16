@@ -4,7 +4,7 @@ using UnityEngine;
 public class StartObject : MonoBehaviour {
 
   public GameObject AkrobanchikPrefab;
-  public GameObject SpawnPoint;
+  public List<GameObject> SpawnPoints;
   private List<AkrobanchikController> _akrobanchiks;
 
   void Start ()
@@ -25,7 +25,9 @@ public class StartObject : MonoBehaviour {
     _akrobanchiks = new List<AkrobanchikController>();
     for (int i = 0; i < PlayerControl.AkrobanchiksCount; i++)
     {
-      var go = Instantiate(AkrobanchikPrefab, SpawnPoint.transform.position, Quaternion.identity);
+      var spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)];
+
+      var go = Instantiate(AkrobanchikPrefab, spawnPoint.transform.position, Quaternion.identity);
       var ac = go.GetComponent<AkrobanchikController>();
       ac.SetIndex(i);
 

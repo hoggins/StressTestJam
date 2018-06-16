@@ -226,4 +226,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AkrobanchikPrefab: {fileID: 1446088723742486, guid: b9b28ba48d423054e873e0a6e543e494,
     type: 2}
-  SpawnPoint: {fileID: 1482324228313428}
+  SpawnPoints:
+  - {fileID: 1482324228313428}

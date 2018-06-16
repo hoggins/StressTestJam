@@ -9,19 +9,22 @@ namespace DefaultNamespace
 
         public static float FinalLevel;
 
-        public float SmoothPerc = 0.1f;
-        public float Fade = 0.01f;
+        public float DecVal = -0.1f;
+        public float IncVal = 0.5f;
         
-        private const int Rate = 5;
+
+        private float _lastLevel;
         
         private void Update()
         {
-            var level = MicInput2.MicLoudness;
-
-            FinalLevel = (FinalLevel + level - Fade) * SmoothPerc;
+            var rawlevel = MicInput2.MicLoudness;
+            
+            var level = _lastLevel > rawlevel ? (DecVal) : IncVal * rawlevel ;
+            _lastLevel = level;
+            
+            FinalLevel = (FinalLevel + level ) ;
 
             FinalLevel = Mathf.Clamp01(FinalLevel);
-            
         }
     }
 }

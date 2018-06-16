@@ -8,9 +8,7 @@ public class GameController : MonoBehaviour
 {
   public static GameController I;
 
-  public GameObject WallPrefab;
   public GameObject AllDeadPrefab;
-  public float WallLength = 50;
   public float RotationSpeed = 8f;
 
   public GameObject RotationRoot;
@@ -21,14 +19,6 @@ public class GameController : MonoBehaviour
   void Awake()
   {
     I = this;
-  }
-
-  void Start()
-  {
-    for (int i = 0; i < 100; i++)
-    {
-      var wall = Instantiate(WallPrefab, new Vector3(0, 10, i*WallLength), Quaternion.identity, RotationRoot.transform);
-    }
   }
 
   void Update()

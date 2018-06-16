@@ -24,6 +24,9 @@ namespace DefaultNamespace
             
             FinalLevel = (FinalLevel + level ) ;
 
+            if (FinalLevel < 0.3)
+                FinalLevel = 0;
+            else
             FinalLevel = Mathf.Clamp01(FinalLevel);
         }
     }

@@ -75,6 +75,7 @@ public class PlayerControl : MonoBehaviour
     {
       var akrobanchik = _akrobanchiks[i];
       akrobanchik.SetIndex(i);
+      akrobanchik.DoUpdate();
     }
   }
 

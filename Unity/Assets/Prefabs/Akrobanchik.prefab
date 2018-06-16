@@ -120,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4255935466753760}
   - component: {fileID: 114706092521873022}
-  - component: {fileID: 54583860434993714}
+  - component: {fileID: 54380754164977826}
   m_Layer: 8
   m_Name: Akrobanchik
   m_TagString: Untagged
@@ -222,8 +222,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4952976878155112}
   - component: {fileID: 33817372258378256}
-  - component: {fileID: 65836890552032416}
   - component: {fileID: 23985822858040466}
+  - component: {fileID: 135965565250193622}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -1367,7 +1367,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831679379403608}
   m_Mesh: {fileID: 4300008, guid: a7904c9f3ef5c6b4a98f7714792e191f, type: 3}
---- !u!54 &54583860434993714
+--- !u!54 &54380754164977826
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1382,18 +1382,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65836890552032416
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1676845173794390}
-  m_Material: {fileID: 13400000, guid: 15aafdbc9bc7c394bb7402c3a235637e, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114706092521873022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1410,3 +1398,15 @@ MonoBehaviour:
   XOffset: 1
   YOffset: 1
   ZOffset: 0.1
+--- !u!135 &135965565250193622
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676845173794390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}

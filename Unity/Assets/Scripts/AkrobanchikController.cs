@@ -18,6 +18,7 @@ public class AkrobanchikController : MonoBehaviour
 
   private float _elapsed;
   private float _elapsed2;
+  private Vector3 _pos;
 
   void Start ()
   {
@@ -36,7 +37,7 @@ public class AkrobanchikController : MonoBehaviour
       Random.Range(-ZOffset, ZOffset));
   }
 
-  void Update ()
+  public void DoUpdate ()
   {
     if(Dead || !PlayerControl.I.Active)
       return;
@@ -56,19 +57,15 @@ public class AkrobanchikController : MonoBehaviour
     pos.y = Mathf.Lerp(pos.y, resultPos.y, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);
     pos.z = Mathf.Lerp(pos.z, resultPos.z, Time.deltaTime*indexSpeed*ZFollowSpeed);
 
+    _pos = pos;
     transform.position = pos;
+
+
+    transform.Rotate(0, 0, Mathf.Sin(_elapsed*3)*Time.deltaTime*25);
 
     //transform.position = Vector3.Lerp(transform.position,
     //  PlayerControl.I.transform.position + _positionOffset,
     //  Time.deltaTime*(PlayerControl.AkrobanchiksCount - _index)*FollowSpeed);
-
-
-  }
-
-  void FixedUpdate()
-  {
-    //_rb.velocity += -(transform.position - (PlayerControl.I.transform.position + _positionOffset)).normalized
-    //                *Time.fixedDeltaTime*Mathf.Sqrt(_index + 1)*FollowSpeed;
   }
 
   public void SetIndex(int index)

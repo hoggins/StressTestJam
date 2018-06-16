@@ -38,7 +38,7 @@ public class AkrobanchikController : MonoBehaviour
 
   void Update ()
   {
-    if(Dead)
+    if(Dead || !PlayerControl.I.Active)
       return;
 
     _elapsed += Time.deltaTime;

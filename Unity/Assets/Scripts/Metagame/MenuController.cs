@@ -13,6 +13,8 @@ namespace DefaultNamespace
       public Sprite MuteSprite;
       public Sprite UnMuteSprite;
       private Image _muteButton;
+      private GameObject _infoRoot;
+      private CanvasGroup  _infoRootCanvas;
 
       private void Awake()
       {
@@ -24,6 +26,10 @@ namespace DefaultNamespace
         var bo = b.GetComponent<BlackOut>();
         bo.SetColor(Color.black, false);
 
+        _infoRoot = GameObject.Find("InfoRoot");
+        _infoRootCanvas = _infoRoot.GetComponent<CanvasGroup>();
+        _infoRoot.SetActive(false);
+        
         _muteButton = GameObject.Find("Mute").GetComponent<Image>();
         UpdateMute();
       }
@@ -49,6 +55,29 @@ namespace DefaultNamespace
 
       public void ToInfo()
       {
+        StartCoroutine(Tween(_infoRoot.activeSelf));
+      }
+
+      private IEnumerator Tween(bool hide)
+      {
+
+        if (!hide)
+          _infoRoot.SetActive(true);
+        
+        var elapsed = 0f;
+        var duration = 0.3f;
+
+        float val;
+        do
+        {
+          elapsed += Time.deltaTime;
+          val = Mathf.Lerp(!hide ? 0f : 1f, hide ? 0f : 1f, elapsed / duration);
+          _infoRootCanvas.alpha = val;
+          yield return null;
+        } while (elapsed < duration);
+
+        if (hide)
+          _infoRoot.SetActive(false);
       }
 
       private IEnumerator BattleCoroutine()

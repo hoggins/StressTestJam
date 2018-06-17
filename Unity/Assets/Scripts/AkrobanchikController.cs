@@ -82,6 +82,8 @@ public class AkrobanchikController : MonoBehaviour
       Dead = true;
       _rb.isKinematic = false;
       Destroy(this);
+
+      GameController.I.SlapSound.Play();
     }
   }
 

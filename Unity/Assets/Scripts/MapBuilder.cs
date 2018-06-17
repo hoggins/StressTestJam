@@ -10,10 +10,11 @@ namespace DefaultNamespace
       public class Level
       {
         public GameObject[] LayoutPrefabs;
+        public int ChanksCount = 8;
+
       }
 
-      public int ChanksCount = 2;
-        public GameObject WallPrefab;
+      public GameObject WallPrefab;
         public GameObject CompleteTriggerPrefab;
       public Level[] Levels;
         public float WallLength = 50;
@@ -29,7 +30,7 @@ namespace DefaultNamespace
         {
           var level = Levels[Mathf.Clamp(DataModel.UserLevel, 0, Levels.Length - 1)];
 
-            for (int i = 0; i < ChanksCount; i++)
+            for (int i = 0; i < level.ChanksCount; i++)
             {
                 var position = new Vector3(0, 10, i*WallLength);
                 var tube = Instantiate(WallPrefab, position, Quaternion.identity, RotationRoot.transform);
@@ -40,7 +41,7 @@ namespace DefaultNamespace
                 var wall = Instantiate(layout, position, Quaternion.identity, RotationRoot.transform);
               }
             }
-            var complete = Instantiate(CompleteTriggerPrefab, new Vector3(0, 10, ChanksCount*WallLength - WallLength/2), Quaternion.identity, RotationRoot.transform);
+            var complete = Instantiate(CompleteTriggerPrefab, new Vector3(0, 10, level.ChanksCount*WallLength - WallLength/2), Quaternion.identity, RotationRoot.transform);
         }
     }
 }

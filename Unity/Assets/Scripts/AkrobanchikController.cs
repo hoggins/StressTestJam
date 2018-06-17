@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AkrobanchikController : MonoBehaviour
 {
@@ -11,20 +13,28 @@ public class AkrobanchikController : MonoBehaviour
   public float YOffset = 2f;
   public float ZOffset = 0.1f;
 
+  [NonSerialized]
+  public bool ShouldUseIndex = true;
+
   private Vector3 _positionOffset;
   private Rigidbody _rb;
 
   private Vector3 _targetRotation;
 
   public bool Dead { get; set; }
+  public bool Active { get; set; }
 
   private float _elapsed;
   private float _elapsed2;
   private Vector3 _pos;
   private float _rotation;
 
+  private float range;
+  private float range2;
   void Start ()
   {
+    range = Random.Range(0, 10f);
+    range2 = Random.Range(-10, 10f);
     _rb = GetComponent<Rigidbody>();
 
     GetPositionOffset();
@@ -43,8 +53,11 @@ public class AkrobanchikController : MonoBehaviour
 
   public void DoUpdate ()
   {
-    if(Dead || !PlayerControl.I.Active)
+    if(!Active || Dead || !PlayerControl.I.Active)
       return;
+
+    range = Mathf.Lerp(range, 0f, Time.deltaTime*0.25f);
+    range2 = Mathf.Lerp(range2, 0f, Time.deltaTime*1f);
 
     _elapsed += Time.deltaTime;
     _elapsed2 += Time.deltaTime;
@@ -55,9 +68,18 @@ public class AkrobanchikController : MonoBehaviour
 
     var pos = transform.position;
     var resultPos = PlayerControl.I.transform.position + _positionOffset;
-    var indexSpeed = PlayerControl.AkrobanchiksCountLength - _index%PlayerControl.AkrobanchiksCountLength;
 
-    pos.x = Mathf.Lerp(pos.x, resultPos.x, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);
+    float indexSpeed;
+
+    if (ShouldUseIndex)
+      indexSpeed = PlayerControl.AkrobanchiksCountLength - _index%PlayerControl.AkrobanchiksCountLength;
+    else
+      indexSpeed = range;
+
+    // var indexSpeed = PlayerControl.AkrobanchiksCountLength - _index%PlayerControl.AkrobanchiksCountLength;
+
+
+    pos.x = Mathf.Lerp(pos.x + range2/100f, resultPos.x, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);
     pos.y = Mathf.Lerp(pos.y, resultPos.y, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);
     pos.z = Mathf.Lerp(pos.z, resultPos.z, Time.deltaTime*indexSpeed*ZFollowSpeed);
 

@@ -1710,14 +1710,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d8f28e450b45ccb44b1bd640668ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChanksCount: 8
   WallPrefab: {fileID: 1515350202041150, guid: 9030747d426d7b94ebd720e69f13b6d6, type: 2}
   CompleteTriggerPrefab: {fileID: 1991518101395182, guid: 2fa1aa72e596458428b901309bff9f39,
     type: 2}
   Levels:
   - LayoutPrefabs:
     - {fileID: 1968568885011608, guid: e60b13798059eef4183313e6d1e85a42, type: 2}
+    ChanksCount: 8
+  - LayoutPrefabs:
+    - {fileID: 1968568885011608, guid: e60b13798059eef4183313e6d1e85a42, type: 2}
     - {fileID: 1968568885011608, guid: d8b5ee9b4bbf71646ab875769a7f3056, type: 2}
+    ChanksCount: 10
   WallLength: 50
   RotationRoot: {fileID: 155107344}
 --- !u!1001 &1852093826

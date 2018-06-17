@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -17,27 +18,39 @@ namespace DefaultNamespace
         public float RaiseTimeSec = 0.5f;
         
         private float _lastLevel;
-        
-        private void Update()
+
+      private void Update()
+      {
+        try
         {
-            var rawlevel = MicInput2.MicLoudness;
-            
-            var level = _lastLevel > rawlevel ? (DecVal) : IncVal * rawlevel ;
-            _lastLevel = level;
-            
-            FinalLevel = (FinalLevel + level ) ;
 
-            if (FinalLevel < 0.3)
-                FinalLevel = 0;
-            else
-                FinalLevel = Mathf.Clamp01(FinalLevel);
 
-            if (FinalLevel > 0.3f)
-                MicInput2.Inctance.MedianPercent = Mathf.Lerp(MicInput2.Inctance.MedianPercent, MedianActive, Time.deltaTime / RaiseTimeSec);
-            else
-                MicInput2.Inctance.MedianPercent = Mathf.Lerp(MedianStill, MicInput2.Inctance.MedianPercent, Time.deltaTime / RaiseTimeSec);
-            
-            MicInput2.Inctance.MedianPercent = Mathf.Clamp(MicInput2.Inctance.MedianPercent, MedianActive, MedianStill);
+          var rawlevel = MicInput2.MicLoudness;
+
+          var level = _lastLevel > rawlevel ? (DecVal) : IncVal*rawlevel;
+          _lastLevel = level;
+
+          FinalLevel = (FinalLevel + level);
+
+          if (FinalLevel < 0.3)
+            FinalLevel = 0;
+          else
+            FinalLevel = Mathf.Clamp01(FinalLevel);
+
+          if (FinalLevel > 0.3f)
+            MicInput2.Inctance.MedianPercent = Mathf.Lerp(MicInput2.Inctance.MedianPercent,
+              MedianActive,
+              Time.deltaTime/RaiseTimeSec);
+          else
+            MicInput2.Inctance.MedianPercent = Mathf.Lerp(MedianStill,
+              MicInput2.Inctance.MedianPercent,
+              Time.deltaTime/RaiseTimeSec);
+
+          MicInput2.Inctance.MedianPercent = Mathf.Clamp(MicInput2.Inctance.MedianPercent, MedianActive, MedianStill);
         }
+        catch (Exception)
+        {
+        }
+      }
     }
 }

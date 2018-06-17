@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
   public Vector3 PositionOnStart;
   public Vector3 Offset;
   public Vector2 OffsetYClamp;
+  public Vector2 OffsetXClamp;
   public static CameraController I;
   public Camera Native;
 
@@ -41,9 +42,11 @@ public class CameraController : MonoBehaviour
 	  _currentSpeed = Mathf.Lerp(_currentSpeed, Speed, Time.deltaTime);
 
 		var lerpZ = Mathf.Lerp(transform.position.z, Target.transform.position.z + Offset.z, Time.deltaTime*_currentSpeed);
-		var lerpY = Mathf.Lerp(transform.position.y, Target.transform.position.y /*+ Offset.y*/, Time.deltaTime*(_currentSpeed*0.3f));
+		var lerpY = Mathf.Lerp(transform.position.y, Target.transform.position.y /*+ Offset.y*/, Time.deltaTime*(_currentSpeed*0.1f));
+		var lerpX = Mathf.Lerp(transform.position.x, Target.transform.position.x /*+ Offset.x*/, Time.deltaTime*(_currentSpeed*0.1f));
 		lerpY = Mathf.Clamp(lerpY, OffsetYClamp.x, OffsetYClamp.y);
-		transform.position = new Vector3(Offset.x, lerpY , lerpZ);
+		lerpX = Mathf.Clamp(lerpX, OffsetXClamp.x, OffsetXClamp.y);
+		transform.position = new Vector3(lerpX, lerpY , lerpZ);
 
 	  //transform.position = Vector3.Lerp(transform.position, Target.transform.position + Offset, Time.deltaTime);
 	}

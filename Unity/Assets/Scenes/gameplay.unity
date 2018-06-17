@@ -1638,7 +1638,8 @@ MonoBehaviour:
   SpeedOnStart: 0
   PositionOnStart: {x: 0, y: 8.02, z: 0.2}
   Offset: {x: 0, y: 8.82, z: -7}
-  OffsetYClamp: {x: 2, y: 14}
+  OffsetYClamp: {x: 0.904, y: 19.22}
+  OffsetXClamp: {x: -8, y: 8}
   Native: {fileID: 1717154656}
 --- !u!1 &1849595666
 GameObject:

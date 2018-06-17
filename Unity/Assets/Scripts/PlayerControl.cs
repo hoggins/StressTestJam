@@ -28,8 +28,6 @@ public class PlayerControl : MonoBehaviour
   public Vector3 Velocity;
 
   public bool Active;
-
-  public const int AkrobanchiksCount = 30;
   
   public float FeedbackCooldown = 3;
   public const int AkrobanchiksCount = 90;

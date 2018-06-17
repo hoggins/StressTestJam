@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
   void Awake()
   {
     Application.targetFrameRate = 30;
+    Screen.sleepTimeout = SleepTimeout.NeverSleep;
     
     I = this;
   }

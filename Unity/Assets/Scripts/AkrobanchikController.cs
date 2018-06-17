@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class AkrobanchikController : MonoBehaviour
 {
+  public GameObject Chvak;
+
   public float FollowSpeed;
   public float ZFollowSpeed;
 
@@ -105,9 +108,14 @@ public class AkrobanchikController : MonoBehaviour
     {
       Dead = true;
       _rb.isKinematic = false;
+      _rb.AddForce(Random.onUnitSphere * 4,ForceMode.Impulse);
       Destroy(this);
 
       GameController.I.SlapSound.Play();
+
+      var contact = collision.contacts.First();
+      var v = Instantiate(Chvak, contact.point + contact.normal *0.02f, Quaternion.LookRotation(-contact.normal));
+      v.transform.SetParent(collision.transform);
     }
   }
 

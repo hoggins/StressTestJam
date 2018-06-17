@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44407356, g: 0.49331725, b: 0.5723977, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1638,7 +1638,8 @@ MonoBehaviour:
   SpeedOnStart: 0
   PositionOnStart: {x: 0, y: 8.02, z: 0.2}
   Offset: {x: 0, y: 8.82, z: -7}
-  OffsetYClamp: {x: 2, y: 14}
+  OffsetYClamp: {x: 0.904, y: 19.22}
+  OffsetXClamp: {x: -8, y: 8}
   Native: {fileID: 1717154656}
 --- !u!1 &1849595666
 GameObject:

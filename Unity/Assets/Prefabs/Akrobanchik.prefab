@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb2b00742e5190843b5be54158ca4c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Chvak: {fileID: 1118579669517224, guid: 425e0ebccc6316f4f98215c1aa5c451f, type: 2}
   FollowSpeed: 0.02
   ZFollowSpeed: 0.2
   XOffset: 1

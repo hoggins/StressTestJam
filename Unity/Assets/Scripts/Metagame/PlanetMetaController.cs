@@ -9,6 +9,8 @@ namespace DefaultNamespace
         public int TargetPlants = 700; // this is used as 100% result
         public float SpawningTime = 1.5f;
         public float RotationSpeed = 5;
+        public float SizeDiffMin = 0.75f;
+        public float SizeDiffMax = 1.25f;
         
         public GameObject PlantPrefab;
 
@@ -82,8 +84,8 @@ namespace DefaultNamespace
             
             Quaternion spawnRotation = Quaternion.LookRotation(-hit.normal);
             GameObject plant = Instantiate(PlantPrefab, hit.point+hit.normal*0.1f, spawnRotation, transform) as GameObject;
-            var val = Random.Range(0.7f,1);
-            plant.transform.localScale = plant.transform.localScale * val ; 
+            var val = Random.Range(SizeDiffMin, SizeDiffMax);
+          plant.transform.localScale = new Vector3(val, val, val);
             return plant;
 
         }

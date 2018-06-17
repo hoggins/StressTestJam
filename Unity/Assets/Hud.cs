@@ -14,7 +14,7 @@ public class Hud : MonoBehaviour
 	{
 	  if (!PlayerControl.I.Active)
 	  {
-	    HP.text = (((float)PlayerControl.AkrobanchiksCount/PlayerControl.AkrobanchiksCount)*100).ToString("D") + "%";
+	    HP.text = "100%";
 	  }
 	  else
 	  {

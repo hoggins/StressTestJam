@@ -13,7 +13,7 @@ namespace DefaultNamespace
       {
         DataModel.Initialize();
         _plants = FindObjectOfType<PlanetMetaController>();
-        _plants.SetScore(DataModel.LastBattleScore, true);
+        _plants.SetScore(DataModel.BestBattleScore, true);
 
         var b = Instantiate(BlackOut);
         var bo = b.GetComponent<BlackOut>();

@@ -24,7 +24,7 @@ public class BlackOut : MonoBehaviour
     color.a = Mathf.Lerp(_hide ? 0f : 1f, !_hide ? 0f : 1f, Curve.Evaluate(_elapsed/Duration));
     MainBack.color = color;
 
-    if(_hide && _elapsed/Duration > 1f)
+    if(!_hide && _elapsed/Duration > 1f)
       Destroy(gameObject);
   }
 }

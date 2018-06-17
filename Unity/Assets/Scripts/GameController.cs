@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
   public AudioSource WinSound;
   public AudioSource SlapSound;
   public AudioSource Music;
+  public AudioSource WooHooSound;
 
   public GameObject AllDeadPrefab;
   public GameObject AllFinishedPrefab;
@@ -71,6 +72,8 @@ public class GameController : MonoBehaviour
   {
     if(IsCompleted)
       return;
+
+    DataModel.UserLevel++;
 
     WinSound.Play();
     IsCompleted = true;

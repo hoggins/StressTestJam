@@ -86,6 +86,13 @@ public class StartObject : MonoBehaviour {
       var ac = SpawnAkrobanchik(i + PlayerControl.AkrobanchiksCount);
       ac.ShouldUseIndex = false;
       ac.Active = false;
+      Destroy(ac.GetComponent<Rigidbody>());
+
+      foreach (var c in ac.GetComponentsInChildren<Collider>())
+      {
+        Destroy(c);
+      }
+
       _fakeAkrobanchiks.Add(ac);
     }
   }

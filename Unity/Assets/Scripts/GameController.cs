@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
 
   private IEnumerator RestartCoroutine()
   {
-    yield return new WaitForSeconds(5.0f);
+    yield return new WaitForSeconds(2.0f);
 
     SceneManager.LoadScene("gameplay");
   }

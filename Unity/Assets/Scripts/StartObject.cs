@@ -10,6 +10,7 @@ public class StartObject : MonoBehaviour {
   private List<AkrobanchikController> _fakeAkrobanchiks;
 
   private bool _didSet;
+  private float _elapsed = Mathf.PI/2f;
 
   void Start ()
 	{
@@ -24,6 +25,17 @@ public class StartObject : MonoBehaviour {
 	    {
 	      _didSet = true;
 	      PlayerControl.I.SetAkrobanchiks(_akrobanchiks);
+
+	      foreach (var a in _akrobanchiks)
+	      {
+	        a.transform.SetParent(null);
+	      }
+
+        foreach (var a in _fakeAkrobanchiks)
+	      {
+	        a.transform.SetParent(null);
+	      }
+
 	      StartCoroutine(KillFake());
 	    }
 	  }
@@ -32,6 +44,9 @@ public class StartObject : MonoBehaviour {
 	  {
 	    fake.DoUpdate();
 	  }
+
+	  _elapsed += Time.deltaTime;
+    transform.Rotate(0, 0, Mathf.Sin(_elapsed)/10);
   }
 
   private IEnumerator KillFake()
@@ -103,7 +118,7 @@ public class StartObject : MonoBehaviour {
     var go = Instantiate(AkrobanchikPrefab, hit.point + hit.normal*0.6f, spawnRotation);
     var ac = go.GetComponent<AkrobanchikController>();
     ac.SetIndex(i);
-
+    ac.transform.SetParent(transform);
 
     return ac;
   }

@@ -33,13 +33,13 @@ public class PlayerControl : MonoBehaviour
 
 
   public GameObject AkrobanchikPrefab;
-  private List<AkrobanchikController> _akrobanchiks;
+  public List<AkrobanchikController> _akrobanchiks;
 
   public Vector2 _input;
 
   public bool AllDead
   {
-    get { return _akrobanchiks != null && _akrobanchiks.All(a => a == null || a.Dead); }
+    get { return Active && _akrobanchiks != null && _akrobanchiks.All(a => a == null || a.Dead); }
   }
   
   public float AlivePercent { get {return _akrobanchiks.Count / (float)AkrobanchiksCount; }}

@@ -5,6 +5,7 @@ namespace DefaultNamespace
 {
     public class GameFinishController : MonoBehaviour
     {
+      public GameObject BlackOut;
         private PlanetMetaController _plants;
         private GameFinishUi _ui;
 
@@ -14,6 +15,10 @@ namespace DefaultNamespace
             _plants.SetScore(DataModel.LastBattleScore);
             _ui = GetComponent<GameFinishUi>();
             _ui.SetScore(DataModel.LastBattleScore);
+
+                  var b = Instantiate(BlackOut);
+        var bo = b.GetComponent<BlackOut>();
+        bo.SetColor(Color.black, false);
         }
 
         public void ToMenu()

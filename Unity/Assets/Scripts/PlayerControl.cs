@@ -114,6 +114,6 @@ public class PlayerControl : MonoBehaviour
     _akrobanchiks = akrobanchiks;
     Active = true;
 
-//    GameController.I.StartSound.Play();
+    GameController.I.StartSound.Play();
   }
 }

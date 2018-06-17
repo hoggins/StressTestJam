@@ -29,7 +29,8 @@ public class PlayerControl : MonoBehaviour
 
   public bool Active;
 
-  public const int AkrobanchiksCount = 30;
+  public const int AkrobanchiksCount = 90;
+  public const int AkrobanchiksCountLength = 30;
 
 
   public GameObject AkrobanchikPrefab;

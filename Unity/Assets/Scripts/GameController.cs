@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
   public AudioSource LoseSound;
   public AudioSource WinSound;
   public AudioSource SlapSound;
+  public AudioSource Music;
 
   public GameObject AllDeadPrefab;
   public GameObject AllFinishedPrefab;

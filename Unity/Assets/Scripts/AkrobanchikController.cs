@@ -14,11 +14,14 @@ public class AkrobanchikController : MonoBehaviour
   private Vector3 _positionOffset;
   private Rigidbody _rb;
 
+  private Vector3 _targetRotation;
+
   public bool Dead { get; set; }
 
   private float _elapsed;
   private float _elapsed2;
   private Vector3 _pos;
+  private float _rotation;
 
   void Start ()
   {
@@ -28,6 +31,7 @@ public class AkrobanchikController : MonoBehaviour
     StartCoroutine(PositionOffsetChanger());
     _elapsed = Random.Range(-Mathf.PI, Mathf.PI);
     _elapsed2 = Random.Range(-Mathf.PI, Mathf.PI);
+    _rotation = Random.Range(-1f, 1f);
   }
 
   private void GetPositionOffset()
@@ -60,12 +64,10 @@ public class AkrobanchikController : MonoBehaviour
     _pos = pos;
     transform.position = pos;
 
+    _targetRotation.z += Mathf.Sin(_elapsed*3)*Time.deltaTime*25;
+    _targetRotation.y += Time.deltaTime*_rotation * 20f;
 
-    transform.Rotate(0, 0, Mathf.Sin(_elapsed*3)*Time.deltaTime*25);
-
-    //transform.position = Vector3.Lerp(transform.position,
-    //  PlayerControl.I.transform.position + _positionOffset,
-    //  Time.deltaTime*(PlayerControl.AkrobanchiksCount - _index)*FollowSpeed);
+    transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(_targetRotation), Time.deltaTime*5f);
   }
 
   public void SetIndex(int index)

@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+
 public class MicInput2 : MonoBehaviour
 {
+
+    public float MedianPercent = 0.7f;
+    
     #region SingleTon
  
     public static MicInput2 Inctance { set; get; }
@@ -14,6 +17,8 @@ public class MicInput2 : MonoBehaviour
     public static float MicLoudnessinDecibels;
  
     private string _device;
+    
+    private List<float> Peaks = new List<float>(128);
  
     //mic initialization
     public void InitMic()
@@ -45,14 +50,19 @@ public class MicInput2 : MonoBehaviour
         if (micPosition < 0) return 0;
         _clipRecord.GetData(waveData, micPosition);
         // Getting a peak on the last 128 samples
+        Peaks.Clear();
         for (int i = 0; i < _sampleWindow; i++)
         {
             float wavePeak = waveData[i] * waveData[i];
+            Peaks.Add(wavePeak);
             if (levelMax < wavePeak)
             {
                 levelMax = wavePeak;
             }
         }
+
+        return MedianCalc.Median(Peaks,MedianPercent);
+        
         return levelMax;
     }
  

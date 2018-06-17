@@ -82,6 +82,8 @@ namespace DefaultNamespace
             
             Quaternion spawnRotation = Quaternion.LookRotation(-hit.normal);
             GameObject plant = Instantiate(PlantPrefab, hit.point+hit.normal*0.1f, spawnRotation, transform) as GameObject;
+            var val = Random.Range(0.7f,1);
+            plant.transform.localScale = plant.transform.localScale * val ; 
             return plant;
 
         }

@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 33979998712718118}
   - component: {fileID: 135947243289914760}
   - component: {fileID: 23805231462707782}
+  - component: {fileID: 64438060033367050}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -114,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 1993391251390118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4253380189071380}
   m_RootOrder: 0
@@ -181,7 +182,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fb353eafde48286499d2b085f0808fac, type: 2}
+  - {fileID: 2100000, guid: 3d375d4e2cd715d408cde5622e2e6a69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,7 +215,21 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1993391251390118}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: 92cbe62d07041a14cbda105c0508afcc, type: 3}
+--- !u!64 &64438060033367050
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993391251390118}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 92cbe62d07041a14cbda105c0508afcc, type: 3}
 --- !u!65 &65794090009248852
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -241,8 +256,7 @@ MonoBehaviour:
   TargetPlants: 700
   SpawningTime: 2
   RotationSpeed: 5
-  Planet: {fileID: 1205459384008042}
-  PlantPrefab: {fileID: 1918322243713692, guid: 165fa9e2b80a82a48ba20d3ab9ede6df,
+  PlantPrefab: {fileID: 1812163322761852, guid: e3787b51975214541942f4840f307bdb,
     type: 2}
 --- !u!135 &135947243289914760
 SphereCollider:
@@ -252,7 +266,7 @@ SphereCollider:
   m_GameObject: {fileID: 1993391251390118}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

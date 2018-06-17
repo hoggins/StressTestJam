@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44407356, g: 0.49331725, b: 0.5723977, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1701,7 +1701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d8f28e450b45ccb44b1bd640668ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChanksCount: 2
+  ChanksCount: 8
   WallPrefab: {fileID: 1515350202041150, guid: 9030747d426d7b94ebd720e69f13b6d6, type: 2}
   CompleteTriggerPrefab: {fileID: 1991518101395182, guid: 2fa1aa72e596458428b901309bff9f39,
     type: 2}

@@ -85,8 +85,10 @@ public class GameController : MonoBehaviour
 
   private IEnumerator FinishedCoroutine()
   {
+    //yield return new WaitForSeconds(0.5f);
+    //CreateBlackout(Color.white, true);
     yield return new WaitForSeconds(0.5f);
-    CreateBlackout(Color.white, true);
+    CreateBlackout(Color.black, true);
     
     yield return new WaitForSeconds(2.0f);
 

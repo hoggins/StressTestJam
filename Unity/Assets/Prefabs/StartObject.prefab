@@ -37,7 +37,9 @@ GameObject:
   - component: {fileID: 4172492916952092}
   - component: {fileID: 33034331550616584}
   - component: {fileID: 23189778628809282}
-  m_Layer: 0
+  - component: {fileID: 135074112972137956}
+  - component: {fileID: 65112872338340198}
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,6 +215,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761528924729234}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65112872338340198
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276675086272274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114341400367435124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -228,3 +242,15 @@ MonoBehaviour:
     type: 2}
   SpawnPoints:
   - {fileID: 1482324228313428}
+--- !u!135 &135074112972137956
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276675086272274}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

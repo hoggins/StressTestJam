@@ -31,9 +31,30 @@ public class StartObject : MonoBehaviour {
     _akrobanchiks = new List<AkrobanchikController>();
     for (int i = 0; i < PlayerControl.AkrobanchiksCount; i++)
     {
-      var spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)];
+	    var spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)];
+	    var pointPos = spawnPoint.transform.position;
 
-      var go = Instantiate(AkrobanchikPrefab, spawnPoint.transform.position, Quaternion.identity);
+	    
+	    RaycastHit hit = new RaycastHit();
+	    for (int j = 0; j < 1000; j++)
+	    {
+		    Vector3 spawnPosition = Random.onUnitSphere * 3 + pointPos;
+		    var spawnDir = pointPos - spawnPosition;
+
+		    var dot = Vector3.Dot(spawnDir, Vector3.up);
+		    if (dot > 0.2f)
+			    continue;
+
+		    var isHit = Physics.Raycast(spawnPosition, spawnDir, out hit, 10, LayerMask.GetMask("StartPoint"));
+		    if (!isHit)
+		    {
+			    continue;
+		    }
+		    break;
+	    }
+
+	    Quaternion spawnRotation = Quaternion.LookRotation(-hit.normal) * Quaternion.Euler(-90,0,0);
+      var go = Instantiate(AkrobanchikPrefab,  hit.point+hit.normal*0.6f, spawnRotation);
       var ac = go.GetComponent<AkrobanchikController>();
       ac.SetIndex(i);
 

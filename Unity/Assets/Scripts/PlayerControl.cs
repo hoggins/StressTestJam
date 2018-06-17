@@ -28,16 +28,17 @@ public class PlayerControl : MonoBehaviour
   public Vector3 Velocity;
 
   public bool Active;
-
+  
+  public float FeedbackCooldown = 3;
   public const int AkrobanchiksFakeCount = 180;
   public const int AkrobanchiksCount = 60;
   public const int AkrobanchiksCountLength = 30;
-
 
   public GameObject AkrobanchikPrefab;
   public List<AkrobanchikController> _akrobanchiks;
 
   public Vector2 _input;
+  private float _lastFeedbackTime;
 
   public bool AllDead
   {
@@ -60,11 +61,24 @@ public class PlayerControl : MonoBehaviour
   {
     _input = input;
 
+    if (input.y > 0.9f)
+      TryPlayFeedbackSound();
+    
     if (_input.y < 0.01f)
     {
       _input.y = -FallSpeed;
     }
   }
+
+  private void TryPlayFeedbackSound()
+  {
+  if (_lastFeedbackTime + FeedbackCooldown > Time.time)
+    return;
+    _lastFeedbackTime = Time.time;
+    GameController.I.WooHooSound.Play();
+  }
+
+  
 
   void Update()
   {

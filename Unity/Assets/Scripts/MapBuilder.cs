@@ -1,13 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class MapBuilder : MonoBehaviour
     {
-        public int ChanksCount = 2;
+      [Serializable]
+      public class Level
+      {
+        public GameObject[] LayoutPrefabs;
+      }
+
+      public int ChanksCount = 2;
         public GameObject WallPrefab;
         public GameObject CompleteTriggerPrefab;
-        public GameObject[] LayoutPrefabs;
+      public Level[] Levels;
         public float WallLength = 50;
 
         public GameObject RotationRoot;
@@ -19,6 +27,8 @@ namespace DefaultNamespace
 
         void Start()
         {
+          var level = Levels[Mathf.Clamp(DataModel.UserLevel, 0, Levels.Length - 1)];
+
             for (int i = 0; i < ChanksCount; i++)
             {
                 var position = new Vector3(0, 10, i*WallLength);
@@ -26,7 +36,7 @@ namespace DefaultNamespace
 
               if (i > 1)
               {
-                var layout = LayoutPrefabs[i%LayoutPrefabs.Length];
+                var layout = level.LayoutPrefabs[i%level.LayoutPrefabs.Length];
                 var wall = Instantiate(layout, position, Quaternion.identity, RotationRoot.transform);
               }
             }

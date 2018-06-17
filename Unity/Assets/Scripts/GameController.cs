@@ -72,6 +72,8 @@ public class GameController : MonoBehaviour
     if(IsCompleted)
       return;
 
+    DataModel.UserLevel++;
+
     WinSound.Play();
     IsCompleted = true;
     DataModel.SetBattleScore(PlayerControl.I.AlivePercent);

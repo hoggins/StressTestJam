@@ -154,12 +154,13 @@ MonoBehaviour:
   MaxSpeedChangeSpeedDown: 0.75
   ForwardAcceleration: 3
   DirectionChangeAcc: 7
-  DirectionChangeAccY: 5
+  DirectionChangeAccY: 7
   DirectionMaxSpeed: 2.5
   SlowDown: 4
   FallSpeed: 1
   Velocity: {x: 0, y: 0, z: 0}
   Active: 0
+  FeedbackCooldown: 3
   AkrobanchikPrefab: {fileID: 1446088723742486, guid: b9b28ba48d423054e873e0a6e543e494,
     type: 2}
   _akrobanchiks: []

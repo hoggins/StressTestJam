@@ -56,6 +56,7 @@ public class AkrobanchikController : MonoBehaviour
 
   public void DoUpdate ()
   {
+
     if(!Active || Dead || !PlayerControl.I.Active)
       return;
 

@@ -20,12 +20,12 @@ namespace DefaultNamespace
         {
             var level = MicInputAdapter.FinalLevel;
             //_indic.transform.localScale = new Vector3(1,level,1);
-            _indic.rectTransform.sizeDelta = new Vector2(200*level, 30);
+            _indic.rectTransform.sizeDelta = new Vector2(100*level, 15);
 
 
             var gyro = GyroInputAdapter.FinalTilt;
             level = (gyro + 1) /2;
-            _gyro.rectTransform.sizeDelta = new Vector2(200*level, 30);
+            _gyro.rectTransform.sizeDelta = new Vector2(100*level, 15);
         }
     }
 }

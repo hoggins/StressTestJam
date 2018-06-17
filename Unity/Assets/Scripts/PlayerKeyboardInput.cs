@@ -42,21 +42,28 @@ public class PlayerKeyboardInput : MonoBehaviour
       input.x = GyroInputAdapter.FinalTilt;
     }
 
-    var isKeyUp = false;
-    if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+    if (FakeInput.IsActive)
     {
-      input.y = 1;
-      isKeyUp = true;
+      input.y = FakeInput.Value;
     }
+    else
+    {
+      var isKeyUp = false;
+      if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+      {
+        input.y = 1;
+        isKeyUp = true;
+      }
 
-    if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-    {
-      input.y = -1;
-      isKeyUp = true;
+      if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+      {
+        input.y = -1;
+        isKeyUp = true;
+      }
+
+      if (!isKeyUp)
+        input.y = MicInputAdapter.FinalLevel;
     }
-    
-    if (!isKeyUp)
-      input.y = MicInputAdapter.FinalLevel;
 
     _pc.SetInput(input);
   }

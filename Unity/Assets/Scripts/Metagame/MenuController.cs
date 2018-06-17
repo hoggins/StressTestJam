@@ -25,6 +25,7 @@ namespace DefaultNamespace
         bo.SetColor(Color.black, false);
 
         _muteButton = GameObject.Find("Mute").GetComponent<Image>();
+        UpdateMute();
       }
 
       public void ToBattle()
@@ -35,6 +36,11 @@ namespace DefaultNamespace
       public void DoMute()
       {
         AudioListener.pause = !AudioListener.pause;
+        UpdateMute();
+      }
+
+      private void UpdateMute()
+      {
         if (AudioListener.pause)
           _muteButton.sprite = UnMuteSprite;
         else

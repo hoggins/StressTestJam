@@ -7,7 +7,7 @@ namespace DefaultNamespace
     {
         public static int LastBattleScore = 78; //{ get; private set; }
         public static int BestBattleScore = 78; //{ get; private set; }
-        public static int UserLevel = 1; //{ get; private set; }
+        public static int UserLevel = 0; //{ get; private set; }
 
         public static void Initialize()
         {

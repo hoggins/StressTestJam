@@ -256,6 +256,8 @@ MonoBehaviour:
   TargetPlants: 700
   SpawningTime: 2
   RotationSpeed: 5
+  SizeDiffMin: 1.25
+  SizeDiffMax: 3
   PlantPrefab: {fileID: 1812163322761852, guid: e3787b51975214541942f4840f307bdb,
     type: 2}
 --- !u!135 &135947243289914760

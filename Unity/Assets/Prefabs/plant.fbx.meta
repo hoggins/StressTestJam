@@ -46,6 +46,8 @@ ModelImporter:
     2100000: Material
     2100002: No Name
     2100004: Material.001
+    2100006: Material.003
+    2100008: Material.002
     2300000: Cube
     2300002: Sphere.001
     2300004: Sphere.002
@@ -103,6 +105,7 @@ ModelImporter:
     4300032: Sphere.006
     4300034: Sphere
     4300036: Cube.002
+    4300038: Cube.000
   externalObjects:
   - first:
       type: UnityEngine:Material

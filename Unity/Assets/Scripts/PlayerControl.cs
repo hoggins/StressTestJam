@@ -29,7 +29,8 @@ public class PlayerControl : MonoBehaviour
 
   public bool Active;
 
-  public const int AkrobanchiksCount = 90;
+  public const int AkrobanchiksFakeCount = 180;
+  public const int AkrobanchiksCount = 60;
   public const int AkrobanchiksCountLength = 30;
 
 
@@ -81,6 +82,7 @@ public class PlayerControl : MonoBehaviour
     for (int i = 0; i < _akrobanchiks.Count; i++)
     {
       var akrobanchik = _akrobanchiks[i];
+      akrobanchik.ShouldUseIndex = true;
       akrobanchik.SetIndex(i);
       akrobanchik.DoUpdate();
     }

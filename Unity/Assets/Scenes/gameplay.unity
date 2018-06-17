@@ -1355,7 +1355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d8f28e450b45ccb44b1bd640668ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChanksCount: 10
+  ChanksCount: 2
   WallPrefab: {fileID: 1515350202041150, guid: 9030747d426d7b94ebd720e69f13b6d6, type: 2}
   CompleteTriggerPrefab: {fileID: 1991518101395182, guid: 2fa1aa72e596458428b901309bff9f39,
     type: 2}

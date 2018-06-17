@@ -539,6 +539,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4829400594805516, guid: b087643ad461b4448bd7816bfe21c925, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829400594805516, guid: b087643ad461b4448bd7816bfe21c925, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829400594805516, guid: b087643ad461b4448bd7816bfe21c925, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b087643ad461b4448bd7816bfe21c925, type: 2}
   m_IsPrefabParent: 0
@@ -1709,8 +1721,7 @@ MonoBehaviour:
     type: 2}
   Levels:
   - LayoutPrefabs:
-    - {fileID: 1976334511786492, guid: e1e55cc2507f72f47a91fc8e6b4158c8, type: 2}
-    - {fileID: 1694081723629332, guid: b0acb1a8121629e42b0fd0954a4453b4, type: 2}
+    - {fileID: 1968568885011608, guid: e60b13798059eef4183313e6d1e85a42, type: 2}
     - {fileID: 1968568885011608, guid: d8b5ee9b4bbf71646ab875769a7f3056, type: 2}
   WallLength: 50
   RotationRoot: {fileID: 155107344}

@@ -32,6 +32,8 @@ public class PlayerControl : MonoBehaviour
   public const int AkrobanchiksCount = 30;
   
   public float FeedbackCooldown = 3;
+  public const int AkrobanchiksCount = 90;
+  public const int AkrobanchiksCountLength = 30;
 
   public GameObject AkrobanchikPrefab;
   public List<AkrobanchikController> _akrobanchiks;

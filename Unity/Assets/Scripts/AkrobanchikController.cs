@@ -55,7 +55,7 @@ public class AkrobanchikController : MonoBehaviour
 
     var pos = transform.position;
     var resultPos = PlayerControl.I.transform.position + _positionOffset;
-    var indexSpeed = PlayerControl.AkrobanchiksCount - _index;
+    var indexSpeed = PlayerControl.AkrobanchiksCountLength - _index%PlayerControl.AkrobanchiksCountLength;
 
     pos.x = Mathf.Lerp(pos.x, resultPos.x, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);
     pos.y = Mathf.Lerp(pos.y, resultPos.y, Time.deltaTime*indexSpeed*Mathf.Sqrt(indexSpeed)*FollowSpeed);

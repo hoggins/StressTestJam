@@ -1428,7 +1428,7 @@ MonoBehaviour:
   Levels:
   - LayoutPrefabs:
     - {fileID: 1968568885011608, guid: e60b13798059eef4183313e6d1e85a42, type: 2}
-    ChanksCount: 8
+    ChanksCount: 7
   - LayoutPrefabs:
     - {fileID: 1968568885011608, guid: e60b13798059eef4183313e6d1e85a42, type: 2}
     - {fileID: 1968568885011608, guid: d8b5ee9b4bbf71646ab875769a7f3056, type: 2}

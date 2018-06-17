@@ -15,8 +15,10 @@ ModelImporter:
     2100002: No Name
     2300000: Flower
     2300002: Planet
+    2300004: //RootNode
     3300000: Flower
     3300002: Planet
+    3300004: //RootNode
     4300000: Flower
     4300002: Planet
   externalObjects: {}

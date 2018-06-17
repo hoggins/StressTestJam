@@ -13,6 +13,7 @@ namespace DefaultNamespace
 
         private void Awake()
         {
+            IsActive = false;
             _indic = GameObject.Find("FakeIndic").GetComponent<Image>();
             _indic.enabled = false;
         }

@@ -45,6 +45,13 @@ namespace DefaultNamespace
         UpdateMute();
       }
 
+      public void DoReset()
+      {
+        PlayerPrefs.DeleteAll();
+        DataModel.Initialize();
+        _plants.SetScore(DataModel.LastBattleScore, true);
+      }
+
       private void UpdateMute()
       {
         if (AudioListener.pause)

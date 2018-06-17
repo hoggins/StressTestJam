@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
   {
     if (PlayerControl.I.AllDead && _allDead == null)
     {
-//      LoseSound.Play();
+      LoseSound.Play();
       ShowAllDead();
     }
   }
@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
 
   public void CompleteGame()
   {
+    WinSound.Play();
     IsCompleted = true;
     DataModel.SetBattleScore(PlayerControl.I.AlivePercent);
     ShowGameFinished();

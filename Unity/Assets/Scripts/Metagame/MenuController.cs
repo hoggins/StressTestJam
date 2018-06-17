@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
@@ -8,6 +9,10 @@ namespace DefaultNamespace
     {
       public GameObject BlackOut;
         private PlanetMetaController _plants;
+
+      public Sprite MuteSprite;
+      public Sprite UnMuteSprite;
+      private Image _muteButton;
 
       private void Awake()
       {
@@ -18,11 +23,26 @@ namespace DefaultNamespace
         var b = Instantiate(BlackOut);
         var bo = b.GetComponent<BlackOut>();
         bo.SetColor(Color.black, false);
+
+        _muteButton = GameObject.Find("Mute").GetComponent<Image>();
       }
 
       public void ToBattle()
       {
         StartCoroutine(BattleCoroutine());
+      }
+
+      public void DoMute()
+      {
+        AudioListener.pause = !AudioListener.pause;
+        if (AudioListener.pause)
+          _muteButton.sprite = UnMuteSprite;
+        else
+          _muteButton.sprite = MuteSprite;
+      }
+
+      public void ToInfo()
+      {
       }
 
       private IEnumerator BattleCoroutine()

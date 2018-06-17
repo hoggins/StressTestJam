@@ -51,7 +51,7 @@ public class PlayerControl : MonoBehaviour
 
   void Start()
   {
-    Velocity = new Vector3(0,0, ForwardMaxSpeedAccelerated);
+    Velocity = new Vector3(0,0, ForwardMaxSpeedAccelerated/4);
   }
 
   public void SetInput(Vector2 input)

@@ -19,7 +19,7 @@ public class StartObject : MonoBehaviour {
     if (_didSet)
       return;
 
-	  if (PlayerControl.I._input.y > 0)
+	  if (PlayerControl.I._input.y > 0.5f)
 	  {
       _didSet = true;
       PlayerControl.I.SetAkrobanchiks(_akrobanchiks);

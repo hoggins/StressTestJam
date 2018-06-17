@@ -5,6 +5,7 @@ namespace DefaultNamespace
     public static class DataModel
     {
         public static int LastBattleScore = 78; //{ get; private set; }
+        public static int UserLevel = 0; //{ get; private set; }
 
         public static void Initialize()
         {

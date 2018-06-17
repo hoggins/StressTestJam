@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1120044547951338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 13.76, z: 0}
+  m_LocalPosition: {x: 0, y: 12, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4753420169977390}
@@ -162,4 +162,5 @@ MonoBehaviour:
   Active: 0
   AkrobanchikPrefab: {fileID: 1446088723742486, guid: b9b28ba48d423054e873e0a6e543e494,
     type: 2}
+  _akrobanchiks: []
   _input: {x: 0, y: 0}

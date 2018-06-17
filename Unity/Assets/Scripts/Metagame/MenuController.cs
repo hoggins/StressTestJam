@@ -29,7 +29,7 @@ namespace DefaultNamespace
       {
         var b = Instantiate(BlackOut);
         var bo = b.GetComponent<BlackOut>();
-        bo.SetColor(Color.black, false);
+        bo.SetColor(Color.black, true);
 
         yield return new WaitForSeconds(1.0f);
 

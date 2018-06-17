@@ -14,11 +14,12 @@ public class Hud : MonoBehaviour
 	{
 	  if (!PlayerControl.I.Active)
 	  {
-	    HP.text = ((PlayerControl.AkrobanchiksCount/PlayerControl.AkrobanchiksCount)*100).ToString("D") + "%";
+	    HP.text = "100%";
 	  }
 	  else
 	  {
-	    HP.text = ((PlayerControl.I._akrobanchiks.Count/PlayerControl.AkrobanchiksCount)*100).ToString("D") + "%";
+	    var value =Mathf.RoundToInt((float) PlayerControl.I._akrobanchiks.Count/(float)PlayerControl.AkrobanchiksCount*100f);
+	    HP.text = value.ToString() + "%";
 	  }
 	}
 }
